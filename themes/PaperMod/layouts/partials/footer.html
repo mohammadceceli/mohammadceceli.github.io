@@ -114,31 +114,4 @@
             }
         });
     }
-    // کد جاوااسکریپت برای کنترل منوی تمام‌صفحه
-document.addEventListener("DOMContentLoaded", function() {
-    const menuToggle = document.getElementById("menu-toggle");
-    const fullscreenMenu = document.getElementById("fullscreen-menu");
-    const menuClose = document.getElementById("menu-close");
-
-    if (menuToggle && fullscreenMenu && menuClose) {
-        menuToggle.addEventListener("click", function() {
-            fullscreenMenu.classList.add("active");
-            document.body.style.overflow = "hidden"; // جلوگیری از اسکرول صفحه
-        });
-
-        menuClose.addEventListener("click", function() {
-            fullscreenMenu.classList.remove("active");
-            document.body.style.overflow = ""; // بازگرداندن اسکرول صفحه
-        });
-
-        // بستن منو با کلیک روی لینک‌ها (اختیاری)
-        const menuLinks = fullscreenMenu.querySelectorAll("a");
-        menuLinks.forEach(link => {
-            link.addEventListener("click", () => {
-                fullscreenMenu.classList.remove("active");
-                document.body.style.overflow = "";
-            });
-        });
-    }
-});
 </script>
