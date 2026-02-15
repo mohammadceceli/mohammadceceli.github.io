@@ -58,25 +58,18 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 <script>
-document.addEventListener("DOMContentLoaded", function() {
+window.addEventListener("load", function() {
 
   const toggle = document.getElementById("mobileToggle");
   const menu = document.querySelector(".menu");
 
   if (!toggle || !menu) return;
 
-  toggle.addEventListener("click", function(e) {
-      e.stopPropagation();
-      menu.classList.toggle("open");
-      document.body.classList.toggle("menu-open");
-  });
-
-  document.addEventListener("click", function(e) {
-      if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-          menu.classList.remove("open");
-          document.body.classList.remove("menu-open");
-      }
-  });
+  toggle.onclick = function() {
+      toggle.classList.toggle("active");
+      menu.classList.toggle("mobile-open");
+      document.body.classList.toggle("menu-lock");
+  };
 
 });
 </script>
