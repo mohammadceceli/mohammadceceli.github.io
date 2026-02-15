@@ -28,6 +28,7 @@ defaultContentLanguage = "fa"
   ShowShareButtons = false
   ShowPostNavLinks = false # چون در CSS مخفی کردیم
   ShowBreadCrumbs = true
+  ShowMenu = true
   ShowCodeCopyButtons = true
   ShowPostCover = true
   mainSections = ["posts"]
