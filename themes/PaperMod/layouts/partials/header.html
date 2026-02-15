@@ -1,6 +1,14 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
+            <div class="hamburger" id="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
             {{- $label_text := (site.Params.logo.text | default site.Title) }}
             {{- if site.Title }}
             <a href="{{ "" | absLangURL }}" accesskey="h" title="{{ $label_text }} (Alt + H)">

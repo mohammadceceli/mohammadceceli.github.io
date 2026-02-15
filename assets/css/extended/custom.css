@@ -776,3 +776,131 @@ code { font-family: 'Fira Code', 'Consolas', monospace !important; }
         text-align: center; 
     }
 }
+/* =====================================================
+   MODERN MOBILE HEADER (OFF-CANVAS RTL)
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+    /* اصلاح فاصله بالا */
+    body {
+        padding-top: 65px !important;
+    }
+
+    .header {
+        top: 8px !important;
+        width: 94% !important;
+        padding: 8px 16px !important;
+        border-radius: 18px !important;
+    }
+
+    .nav {
+        min-height: 48px;
+    }
+
+    /* همبرگری */
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 22px;
+        height: 16px;
+        cursor: pointer;
+    }
+
+    .hamburger span {
+        height: 2px;
+        background: #fff;
+        border-radius: 2px;
+        transition: .3s;
+    }
+
+    /* منو اسلایدی */
+    .menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 78%;
+        max-width: 320px;
+        height: 100vh;
+        background: rgba(0,0,0,0.95);
+        backdrop-filter: blur(20px);
+        padding: 90px 25px 40px;
+        flex-direction: column;
+        gap: 0;
+        transition: right .35s ease;
+        z-index: 2000;
+        overflow-y: auto;
+    }
+
+    .menu.open {
+        right: 0;
+    }
+
+    .menu li {
+        width: 100%;
+    }
+
+    .menu > li > a {
+        display: block;
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        font-size: 1rem;
+    }
+
+    /* زیرمنو */
+    .menu ul {
+        position: static !important;
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        display: none;
+        padding: 5px 0 10px 15px !important;
+        margin: 0 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+    }
+
+    .menu li.active > ul {
+        display: block;
+    }
+
+    .menu ul li a {
+        padding: 10px 0 !important;
+        font-size: .9rem;
+        color: #bbb !important;
+    }
+
+    /* اورلی تار */
+    .menu-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.6);
+        opacity: 0;
+        visibility: hidden;
+        transition: .3s;
+        z-index: 1500;
+    }
+
+    .menu-overlay.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* جلوگیری از اسکرول */
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    /* مخفی کردن hover دسکتاپ */
+    .menu li::after,
+    .menu ul li::after {
+        display: none !important;
+    }
+}
+
+/* مخفی بودن همبرگری در دسکتاپ */
+.hamburger {
+    display: none;
+}
