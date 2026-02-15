@@ -970,3 +970,54 @@ code { font-family: 'Fira Code', 'Consolas', monospace !important; }
         display: block !important;
     }
 }
+/* ===========================
+   ENABLE PAPERMOD MOBILE MENU
+   =========================== */
+
+@media (max-width: 768px) {
+
+    /* نمایش دکمه همبرگری تم PaperMod */
+    #menu-toggle {
+        display: block !important;
+        cursor: pointer;
+    }
+
+    /* منو به صورت fixed slide-in */
+    .menu {
+        position: fixed !important;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 280px;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(16px);
+        padding: 80px 20px 40px;
+        flex-direction: column !important;
+        transition: right .35s ease;
+        z-index: 2000;
+        overflow-y: auto;
+    }
+
+    /* وقتی باز شده */
+    .menu.open {
+        right: 0 !important;
+    }
+
+    /* لینک‌های موبایل */
+    .menu > li > a {
+        display: block;
+        padding: 14px 0;
+        font-size: 1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* زیرمنو حالت آکاردئونی */
+    .menu ul {
+        display: none !important;
+        padding-left: 15px !important;
+    }
+    .menu li.active > ul {
+        display: block !important;
+    }
+}
