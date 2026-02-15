@@ -57,3 +57,28 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  const toggle = document.getElementById("mobileToggle");
+  const menu = document.querySelector(".menu");
+
+  toggle.addEventListener("click", function() {
+      menu.classList.toggle("open");
+      document.body.classList.toggle("menu-open");
+  });
+
+  document.querySelectorAll(".menu > li").forEach(function(item) {
+      const sub = item.querySelector("ul");
+      if (sub) {
+          item.querySelector("a").addEventListener("click", function(e) {
+              if (window.innerWidth <= 768) {
+                  e.preventDefault();
+                  item.classList.toggle("active");
+              }
+          });
+      }
+  });
+
+});
+</script>

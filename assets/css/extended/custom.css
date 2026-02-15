@@ -1021,3 +1021,81 @@ code { font-family: 'Fira Code', 'Consolas', monospace !important; }
         display: block !important;
     }
 }
+/* =====================================
+   CUSTOM MOBILE HAMBURGER
+   ===================================== */
+
+.mobile-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    body {
+        padding-top: 65px !important;
+    }
+
+    .mobile-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 22px;
+        height: 16px;
+        cursor: pointer;
+    }
+
+    .mobile-toggle span {
+        height: 2px;
+        background: #fff;
+        border-radius: 2px;
+        transition: .3s;
+    }
+
+    .menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 78%;
+        max-width: 300px;
+        height: 100vh;
+        background: rgba(0,0,0,0.95);
+        backdrop-filter: blur(20px);
+        padding: 80px 25px 40px;
+        flex-direction: column !important;
+        transition: right .3s ease;
+        z-index: 2000;
+    }
+
+    .menu.open {
+        right: 0 !important;
+    }
+
+    .menu li {
+        width: 100%;
+    }
+
+    .menu > li > a {
+        display: block;
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .menu ul {
+        position: static !important;
+        display: none !important;
+        background: none !important;
+        padding-right: 15px !important;
+        box-shadow: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+    }
+
+    .menu li.active > ul {
+        display: block !important;
+    }
+
+    body.menu-open {
+        overflow: hidden;
+    }
+}
