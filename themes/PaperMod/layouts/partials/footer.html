@@ -1,0 +1,117 @@
+{{- if not (.Param "hideFooter") }}
+<div id="progress-container"><div id="progress-bar"></div></div>
+<footer class="footer">
+    <div class="footer-container">
+        
+        <div class="footer-column">
+            <h3>تک ۲۰۴۹</h3>
+            <p>روایتی از دنیای تکنولوژی و آینده‌ای که در حال ساخت آن هستیم. ما اینجا مرزهای دیجیتال را بررسی می‌کنیم.</p>
+        </div>
+
+        <div class="footer-column">
+            <h3>دسترسی سریع</h3>
+            <ul>
+                <li><a href="/">صفحه اصلی</a></li>
+                <li><a href="/posts">مطالب وبلاگ</a></li>
+                <li><a href="/about">درباره من</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>ارتباط با من</h3>
+            <p>ایمیل: saman@example.com</p>
+            <div class="social-icons-footer">
+            
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        {{- if not site.Params.footer.hideCopyright }}
+            <span>&copy; {{ now.Year }} <a href="{{ "" | absLangURL }}">{{ site.Title }}</a></span>
+        {{- end }}
+    </div>
+</footer>
+{{- end }}
+
+{{- if (not site.Params.disableScrollToTop) }}
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor"><path d="M12 6H0l6-6z" /></svg>
+</a>
+{{- end }}
+
+<script>
+    window.addEventListener('scroll', function() {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        const progressBar = document.getElementById("progress-bar");
+        if(progressBar) progressBar.style.width = scrolled + "%";
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const elementsToReveal = document.querySelectorAll('.post-entry, .sidebar-section, .footer-container');
+        elementsToReveal.forEach(el => el.classList.add('reveal'));
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        elementsToReveal.forEach(el => observer.observe(el));
+    });
+</script>
+
+<script>
+    let lastScrollTop = 0;
+    const header = document.querySelector('.header');
+
+    window.addEventListener('scroll', function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            header.style.top = "-100px";
+            header.style.opacity = "0";
+        } else {
+            header.style.top = "20px";
+            header.style.opacity = "1";
+            
+            if (scrollTop > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+        lastScrollTop = scrollTop;
+    });
+</script>
+
+<script>
+    document.addEventListener('click', function(event) {
+        const searchForm = document.querySelector('.search-form');
+        const searchInput = document.getElementById('searchInput');
+        
+        // اگر باکس باز است و کاربر بیرون کلیک کرد، باکس را جمع کن
+        if (searchForm && !searchForm.contains(event.target)) {
+            searchInput.value = ''; // پاک کردن متن
+            searchInput.blur();    // برداشتن فوکوس برای جمع شدن کپسول
+        }
+    });
+
+    // جلوگیری از ارسال فرم اگر باکس خالی است (در اولین کلیک فقط باز شود)
+    const searchForm = document.querySelector('.search-form');
+    if (searchForm) {
+        searchForm.addEventListener('submit', function(e) {
+            const input = document.getElementById('searchInput');
+            if (input.value.trim() === "") {
+                e.preventDefault(); // اگر خالی بود فرم رو ارسال نکن
+                input.focus();      // فقط باکس رو باز نگه دار
+            }
+        });
+    }
+</script>
