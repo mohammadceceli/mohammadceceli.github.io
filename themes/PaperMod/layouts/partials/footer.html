@@ -115,3 +115,17 @@
         });
     }
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.innerWidth <= 768) {
+    document.querySelectorAll(".menu > li").forEach(function(item) {
+      item.addEventListener("click", function(e) {
+        if (this.querySelector("ul")) {
+          e.preventDefault();
+          this.classList.toggle("active");
+        }
+      });
+    });
+  }
+});
+</script>

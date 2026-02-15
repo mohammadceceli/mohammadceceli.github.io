@@ -615,3 +615,164 @@ code { font-family: 'Fira Code', 'Consolas', monospace !important; }
     /* Author */
     .author-box { flex-direction: column; text-align: center; }
 }
+/* --------------------------------------------------------------------------
+   12. MOBILE RESPONSIVE FIXES - CLEAN HEADER & TRUE DROPDOWN
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+    .main-wrapper { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+
+    .post-layout { 
+        flex-direction: column; 
+        padding: 0 20px; 
+    }
+
+    .post-sidebar { 
+        position: relative; 
+        top: 0; 
+        margin-top: 40px; 
+    }
+
+    .footer-container { 
+        grid-template-columns: 1fr; 
+        text-align: center; 
+        width: 90%; 
+        padding: 30px; 
+    }
+
+    .footer-social-links { justify-content: center; }
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+    /* ---------- HEADER FIX ---------- */
+
+    body { 
+        padding-top: 70px !important;   /* کمتر شد */
+    }
+
+    .header {
+        top: 8px !important;
+        width: 94% !important;
+        padding: 6px 14px !important;   /* فشرده‌تر */
+        border-radius: 20px !important;
+    }
+
+    .nav {
+        min-height: 44px;
+    }
+
+    .logo a { 
+        font-size: 1rem !important; 
+    }
+
+
+    /* ---------- MENU MOBILE STRUCTURE ---------- */
+
+    .menu {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0 !important;
+        width: 100%;
+    }
+
+    .menu li {
+        width: 100%;
+        position: relative !important;
+    }
+
+    /* حذف absolute dropdown موبایل */
+    .menu ul {
+        position: static !important;
+        transform: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: none;   /* پیشفرض بسته */
+    }
+
+    /* وقتی کلاس active بگیره باز میشه */
+    .menu li.active > ul {
+        display: block;
+    }
+
+    .menu > li > a {
+        display: block;
+        padding: 12px 10px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .menu ul li a {
+        padding: 10px 20px !important;
+        background: rgba(255,255,255,0.03);
+        border-radius: 12px;
+        margin: 4px 0;
+    }
+
+    /* حذف hover bridge */
+    .menu li::after,
+    .menu ul li::after {
+        display: none !important;
+    }
+
+
+    /* ---------- CARDS ---------- */
+
+    .main-wrapper { 
+        padding: 0 14px; 
+        gap: 20px; 
+    }
+
+    .post-entry {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 16px !important;
+        gap: 14px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .post-entry .entry-cover {
+        width: 100% !important;
+        height: 170px !important;
+    }
+
+    .post-entry .entry-header h2 { 
+        font-size: 1.05rem !important; 
+    }
+
+
+    /* ---------- SEARCH ---------- */
+
+    .search-form:focus-within { 
+        width: 160px; 
+    }
+
+    #fastSearch { 
+        width: 240px; 
+        right: -40px; 
+    }
+
+
+    /* ---------- SINGLE ---------- */
+
+    .post-single .post-title { 
+        font-size: 1.3rem !important; 
+    }
+
+    .post-content h2 { 
+        font-size: 1.2rem !important; 
+    }
+
+    .author-box { 
+        flex-direction: column; 
+        text-align: center; 
+    }
+}
