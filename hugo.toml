@@ -4,62 +4,78 @@ theme = "PaperMod"
 languageCode = "fa-ir"
 defaultContentLanguage = "fa"
 
-# ============================================
-# تنظیمات خروجی برای فعال‌سازی جستجوی زنده
-# ============================================
+# ======================================================
+# خروجی‌ها و RSS / JSON برای جستجوی زنده
+# ======================================================
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
 [pagination]
   pagerSize = 10
 
+# ======================================================
+# تنظیمات عمومی سایت
+# ======================================================
 [params]
   env = "production"
   author = "سامان"
   description = "تک ۲۰۴۹ - روایتی از دنیای تکنولوژی و آینده"
   
-  # تنظیمات ظاهر و تم
+  # ظاهر و تم
   DateFormat = "2006/01/02"
-  defaultTheme = "dark" # تغییر به دارک برای هماهنگی با کدهای قبلی
-  disableThemeToggle = true
+  defaultTheme = "dark"         # دارک مود پیشفرض
+  disableThemeToggle = true     # خاموش کردن سوئیچ تم
 
-  # تنظیمات محتوا
+  # محتوا
   ShowReadingTime = true
   ShowShareButtons = false
-  ShowPostNavLinks = false # چون در CSS مخفی کردیم
+  ShowPostNavLinks = false
   ShowBreadCrumbs = true
   ShowMenu = true
   ShowCodeCopyButtons = true
   ShowPostCover = true
   mainSections = ["posts"]
 
-  # تنظیمات جستجو
+  # جستجوی زنده
   [params.search]
     escapeHTML = false
 
+# ======================================================
+# تنظیمات کاور
+# ======================================================
 [params.cover]
   linkFullImages = true
   responsiveImages = true
 
+# ======================================================
+# بخش خانه
+# ======================================================
 [params.homeInfoParams]
   Title = "تک ۲۰۴۹"
   Content = "به دنیای آینده خوش آمدید"
 
+# ======================================================
+# CSS سفارشی
+# ======================================================
 [[params.customCSS]]
   href = "/css/custom.css"
 
-# تنظیمات مربوط به هایلایت کردن کدها
+# ======================================================
+# هایلایت کدها
+# ======================================================
 [markup]
   [markup.highlight]
     noClasses = false
     style = "monokai"
     lineNos = false
 
+# ======================================================
 # منوی اصلی سایت
+# ======================================================
 [[menu.main]]
   name = "دسته‌بندی‌ها"
   identifier = "categories"
-  url = "#"
+  url = "/"                  # لینک واقعی به جای #
   weight = 1
 
 [[menu.main]]
@@ -74,14 +90,16 @@ defaultContentLanguage = "fa"
   parent = "categories"
   identifier = "programming"
   url = "/categories/programming"
-  weight = 1
+  weight = 2
   
 [[menu.main]]
   name = "درباره من"
+  identifier = "about"
   url = "/me/"
   weight = 3
 
 [[menu.main]]
   name = "قهوه"
+  identifier = "coffee"
   url = "/coffee/"
   weight = 4
