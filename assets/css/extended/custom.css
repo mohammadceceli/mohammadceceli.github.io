@@ -1251,27 +1251,3 @@ code { font-family: 'Fira Code', 'Consolas', monospace !important; }
         overflow: hidden;
     }
 }
-/* اصلاح وضعیت هدر در دسکتاپ */
-.nav {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    max-width: calc(var(--main-width) + var(--gap) * 2);
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#menu {
-    display: flex; /* در دسکتاپ همیشه افقی باشد */
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-#menu li {
-    margin-right: 20px;
-}
-
-/* مخفی کردن دکمه در دسکتاپ */
-#menu-trigger {
