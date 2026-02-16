@@ -34,15 +34,31 @@
 
 :root {
 
-    --theme: #000000 !important;
-    --entry: #000000 !important;
-    --primary: #ffffff !important;
-    --secondary: #cdcdcd !important;
-    --content: #ffffff !important;
-    --border: rgba(255, 255, 255, 0.12) !important;
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-blur: blur(18px);
+    /* === Primary Colors (unchanged from your CSS) === */
+    --primary: #000000;
+    --secondary: #666666;
+    --accent: #4f46e5;
+
+    /* === Background System === */
+    --bg-main: #ffffff;
+    --bg-soft: #f8f9fa;
+    --bg-card: ##cdcdcd;
+
+    /* === Borders === */
+    --border-light: #e5e7eb;
+    --border-soft: #f1f1f1;
+
+    /* === Text === */
+    --text-main: #111111;
+    --text-muted: #6b7280;
+
+    /* === Radius === */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    /* === Transition === */
+    --transition: 0.3s ease;
 }
 
 /* ================================
@@ -648,3 +664,61 @@ code {
         text-align: center;
     }
 }
+:root {
+    --theme: #000000 !important;
+    --entry: #000000 !important;
+    --primary: #ffffff !important;
+    --secondary: #cdcdcd !important;
+    --content: #ffffff !important;
+    --border: rgba(255, 255, 255, 0.12) !important;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-blur: blur(18px);
+}
+
+/* --------------------------------------------------------------------------
+   2. GLOBAL RESET & BODY
+   -------------------------------------------------------------------------- */
+html, body {
+    background-color: #242327 !important;
+    color: #ffffff !important;
+    direction: rtl;
+    text-align: right;
+    font-family: "Vazirmatn", sans-serif !important;
+    /* فاصله از بالا برای هدر شناور */
+    padding-top: 100px; 
+}
+
+/* تمام متون */
+body, .logo, .post-content, .post-title, .post-entry, 
+.main, header, nav, h1, h2, h3, h4, h5, h6, 
+p, span, a, li, .sidebar, .footer {
+    font-family: "Vazirmatn", sans-serif !important;
+    color: var(--secondary) !important;
+}
+
+a { text-decoration: none; color: #ffffff !important; transition: opacity 0.2s; }
+a:hover { opacity: 0.8; }
+hr { border-color: #111111 !important; }
+
+/* --------------------------------------------------------------------------
+   3. LAYOUT STRUCTURE
+   -------------------------------------------------------------------------- */
+.main, .container, .wrapper {
+    max-width: 1400px !important;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.main-wrapper {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px;
+    align-items: start;
+}
+
+/* پنهان کردن اطلاعات اضافی صفحه اصلی */
+.home-info { display: none !important; }
