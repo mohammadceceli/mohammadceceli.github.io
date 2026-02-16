@@ -756,67 +756,93 @@ code {
         display: block !important;
         padding: 0 15px !important;
     }
-}
-@media (max-width: 768px) {
-    /* ظرف اصلی کارت‌ها */
+    @media (max-width: 768px) {
+    /* ۱. اصلاح بدنه اصلی برای حذف فضاهای خالی اضافی */
+    .main-wrapper, .container {
+        padding: 0 12px !important;
+    }
+
+    /* ۲. بازطراحی کامل کارت پست‌ها */
     .post-entry {
         display: flex !important;
-        flex-direction: row !important; /* چیدمان افقی به جای عمودی */
-        align-items: stretch;
-        padding: 10px !important; /* پدینگ کمتر برای صرفه‌جویی در فضا */
-        gap: 15px !important;
-        margin-bottom: 16px !important;
-        height: 120px; /* ارتفاع ثابت برای یکدست شدن لیست */
-        background: rgba(47, 46, 50, 0.6) !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        border-radius: 16px !important;
+        flex-direction: column !important; /* چیدمان عمودی برای باز شدن فضا برای تیتر */
+        padding: 0 !important; /* پدینگ داخلی را صفر می‌کنیم تا تصویر کامل بچسبد */
+        margin-bottom: 24px !important;
+        background: rgba(47, 46, 50, 0.7) !important; /* رنگ درخواستی شما */
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(205, 205, 205, 0.1) !important;
+        border-radius: 20px !important;
         overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
 
-    /* تنظیم بخش تصویر */
+    /* ۳. بهینه‌سازی تصویر پست */
     .post-entry .entry-cover {
-        width: 100px !important; /* اندازه کوچک و ثابت برای تصویر */
-        height: 100px !important;
-        min-width: 100px;
+        width: 100% !important;
+        height: 180px !important; /* ارتفاع کنترل شده برای اشغال نکردن کل صفحه */
+        border-radius: 0 !important; /* تصویر به لبه‌ها می‌چسبد */
         margin: 0 !important;
-        border-radius: 12px !important;
-        align-self: center;
     }
 
-    /* تنظیم بخش محتوا (متن) */
+    .post-entry .entry-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* ۴. بخش متنی کارت */
     .post-entry .entry-header {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        overflow: hidden;
+        padding: 16px 20px 10px 20px !important;
         text-align: right;
-        flex-grow: 1;
     }
 
-    /* عنوان پست */
+    /* ۵. نمایش کامل تیتر */
     .post-entry .entry-header h2 {
-        font-size: 0.95rem !important; /* فونت کوچک‌تر و خوانا */
-        margin: 0 0 8px 0 !important;
-        line-height: 1.4 !important;
-        display: -webkit-box;
-        -webkit-line-clamp: 2; /* محدود کردن عنوان به ۲ خط */
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        color: #ffffff !important;
+        font-size: 1.2rem !important;
+        line-height: 1.6 !important;
+        color: #ffffff !important; /* رنگ سفید برای درخشش روی شیشه */
+        margin: 0 !important;
+        font-weight: 700;
+        display: block !important; /* اطمینان از نمایش کامل */
     }
 
-    /* پنهان کردن خلاصه متن در موبایل برای خلوت شدن ظاهر */
+    /* ۶. حذف خلاصه متن (برای خلوت شدن کارت در موبایل) */
     .post-entry .entry-content {
         display: none !important;
     }
 
-    /* فوتر کارت (تاریخ و متاداتا) */
+    /* ۷. اصلاح فوتر کارت و حذف اطلاعات اضافی */
     .post-entry .entry-footer {
-        margin-top: auto !important;
-        font-size: 0.75rem !important;
-        opacity: 0.7;
-        color: #CDCDCD !important;
+        padding: 0 20px 20px 20px !important;
+        border: none !important;
+        font-size: 0.85rem !important;
+        color: #CDCDCD !important; /* رنگ متن درخواستی */
+        display: flex;
+        justify-content: flex-start;
     }
+
+    /* حذف نام نویسنده و زمان مطالعه (طبق درخواست شما) */
+    .post-entry .entry-footer .author,
+    .post-entry .entry-footer .reading-time,
+    .post-entry .entry-footer span:not(.date) { 
+        display: none !important; 
+    }
+
+    /* ۸. خوانایی تاریخ */
+    .post-entry .entry-footer .date {
+        opacity: 0.8;
+        letter-spacing: 0.5px;
+    }
+
+    /* ۹. اصلاح ساختار کلی صفحه در موبایل */
+    .main-wrapper {
+        display: block !important;
+    }
+    
+    .sidebar {
+        display: none !important;
+    }
+}
 }
 :root {
     --theme: #000000 !important;
