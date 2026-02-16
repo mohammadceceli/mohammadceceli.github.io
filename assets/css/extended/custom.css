@@ -243,8 +243,13 @@ code {
     max-width: 1200px;
     z-index: 2000;
 
-    background: rgba(255,255,255,0.95);
-    border: 1px solid var(--border-light);
+    /* حالت شیشه‌ای با رنگ #242328 */
+    background: rgba(36, 35, 40, 0.7); /* رنگ شما با شفافیت 70 درصد */
+    backdrop-filter: blur(10px); /* افکت تاری پشت هدر */
+    -webkit-backdrop-filter: blur(10px); /* پشتیبانی برای مرورگر سافاری */
+    
+    /* حاشیه ظریف برای تقویت حس شیشه‌ای */
+    border: 1px solid rgba(205, 205, 205, 0.1); 
     border-radius: var(--radius-lg);
     padding: 16px 40px;
 
@@ -255,21 +260,29 @@ code {
     transition: all 0.4s ease;
 }
 
-/* Shrink effect on scroll */
+/* تغییر رنگ متن‌ها و لینک‌های داخل هدر */
+.header a, 
+.header span, 
+.header div {
+    color: #CDCDCD ! competitiveness;
+}
+
+/* افکت اسکرول */
 .header.scrolled {
     top: 10px;
     padding: 12px 30px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    background: rgba(36, 35, 40, 0.85); /* کمی تیره تر هنگام اسکرول */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-/* Logo */
+/* تنظیمات لوگو */
 .logo a {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--primary);
-    background: linear-gradient(120deg,#000,#555);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    /* اعمال رنگ درخواستی شما */
+    color: #CDCDCD !important; 
+    background: none; 
+    -webkit-text-fill-color: initial; /* حذف حالت گرادینت قبلی برای خوانایی بهتر روی شیشه */
 }
 
 /* Desktop Menu */
