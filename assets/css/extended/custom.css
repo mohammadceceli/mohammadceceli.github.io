@@ -34,31 +34,15 @@
 
 :root {
 
-    /* === Primary Colors (unchanged from your CSS) === */
-    --primary: #000000;
-    --secondary: #666666;
-    --accent: #4f46e5;
-
-    /* === Background System === */
-    --bg-main: #ffffff;
-    --bg-soft: #f8f9fa;
-    --bg-card: #ffffff;
-
-    /* === Borders === */
-    --border-light: #e5e7eb;
-    --border-soft: #f1f1f1;
-
-    /* === Text === */
-    --text-main: #111111;
-    --text-muted: #6b7280;
-
-    /* === Radius === */
-    --radius-sm: 6px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
-
-    /* === Transition === */
-    --transition: 0.3s ease;
+    --theme: #000000 !important;
+    --entry: #000000 !important;
+    --primary: #ffffff !important;
+    --secondary: #cdcdcd !important;
+    --content: #ffffff !important;
+    --border: rgba(255, 255, 255, 0.12) !important;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-blur: blur(18px);
 }
 
 /* ================================
