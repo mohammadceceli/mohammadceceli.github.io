@@ -234,7 +234,9 @@ code {
    11. PRO HEADER + NAVIGATION
    ========================================================================== */
 
+/* استایل اصلی هدر */
 .header {
+    /* موقعیت دهی */
     position: fixed;
     top: 20px;
     left: 50%;
@@ -243,46 +245,55 @@ code {
     max-width: 1200px;
     z-index: 2000;
 
-    /* حالت شیشه‌ای با رنگ #242328 */
-    background: rgba(36, 35, 40, 0.7); /* رنگ شما با شفافیت 70 درصد */
-    backdrop-filter: blur(10px); /* افکت تاری پشت هدر */
-    -webkit-backdrop-filter: blur(10px); /* پشتیبانی برای مرورگر سافاری */
+    /* افکت شیشه‌ای با رنگ جدید #2F2E32 */
+    background: rgba(47, 46, 50, 0.65); /* رنگ درخواستی با شفافیت 65% */
+    backdrop-filter: blur(15px); /* ایجاد تاری پشت هدر */
+    -webkit-backdrop-filter: blur(15px);
     
-    /* حاشیه ظریف برای تقویت حس شیشه‌ای */
-    border: 1px solid rgba(205, 205, 205, 0.1); 
-    border-radius: var(--radius-lg);
-    padding: 16px 40px;
-
+    /* حاشیه و سایه برای عمق دادن به حالت شیشه‌ای */
+    border: 1px solid rgba(205, 205, 205, 0.15); /* حاشیه بسیار ظریف */
+    border-radius: 20px; /* لبه‌های گرد مدرن */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    
+    /* چیدمان داخلی */
+    padding: 18px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    transition: all 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* تغییر رنگ متن‌ها و لینک‌های داخل هدر */
-.header a, 
-.header span, 
-.header div {
-    color: #CDCDCD ! competitiveness;
-}
-
-/* افکت اسکرول */
+/* افکت هدر هنگام اسکرول (منسجم‌تر و باریک‌تر) */
 .header.scrolled {
     top: 10px;
     padding: 12px 30px;
-    background: rgba(36, 35, 40, 0.85); /* کمی تیره تر هنگام اسکرول */
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    background: rgba(47, 46, 50, 0.85); /* تیره‌تر شدن برای خوانایی بیشتر در اسکرول */
+    border-color: rgba(205, 205, 205, 0.2);
 }
 
-/* تنظیمات لوگو */
+/* تنظیم رنگ متن‌ها و لینک‌های عمومی */
+.header a, 
+.header li,
+.header span {
+    color: #CDCDCD !important;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+/* استایل لوگو */
 .logo a {
-    font-size: 1.5rem;
-    font-weight: 700;
-    /* اعمال رنگ درخواستی شما */
-    color: #CDCDCD !important; 
-    background: none; 
-    -webkit-text-fill-color: initial; /* حذف حالت گرادینت قبلی برای خوانایی بهتر روی شیشه */
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #CDCDCD !important;
+    letter-spacing: -0.5px;
+    /* حذف افکت‌های قبلی که با رنگ جدید تداخل داشت */
+    background: none;
+    -webkit-text-fill-color: initial;
+}
+
+/* افکت هاور برای لینک‌ها */
+.header a:hover {
+    opacity: 0.8;
 }
 
 /* Desktop Menu */
