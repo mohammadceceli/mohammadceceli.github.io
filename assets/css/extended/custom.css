@@ -1264,3 +1264,48 @@ code { font-family: 'Fira Code', 'Consolas', monospace !important; }
     direction: rtl;
 }
 .author-avatar img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; }
+@media (max-width: 768px) {
+    /* ۱. بهینه‌سازی ظرف اصلی باکس نویسنده */
+    .author-box {
+        flex-direction: column !important; /* چیدمان عمودی در موبایل */
+        gap: 15px !important; /* کاهش فاصله بین عکس و متن */
+        padding: 20px !important; /* پدینگ کمتر برای اشغال فضای کمتر */
+        margin-top: 30px !important;
+        text-align: center !important; /* وسط‌چین کردن محتوا */
+        border-radius: 20px !important;
+        background: rgba(47, 46, 50, 0.6) !important; /* هماهنگی با تم شیشه‌ای شما */
+    }
+
+    /* ۲. فیکس کردن عکس نویسنده (دایره کامل) */
+    .author-avatar {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .author-avatar img {
+        width: 80px !important; /* سایز کمی کوچک‌تر برای موبایل */
+        height: 80px !important;
+        border-radius: 50% !important; /* تضمین دایره بودن */
+        border: 2px solid rgba(205, 205, 205, 0.2); /* حاشیه ظریف دور عکس */
+        object-fit: cover !important;
+    }
+
+    /* ۳. تنظیمات متن داخل باکس */
+    .author-info {
+        width: 100%;
+    }
+
+    .author-info h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 8px !important;
+        color: #ffffff !important;
+    }
+
+    .author-info p {
+        font-size: 0.9rem !important;
+        line-height: 1.6 !important;
+        color: #CDCDCD !important; /* رنگ متن درخواستی شما */
+        margin: 0 !important;
+    }
+}
