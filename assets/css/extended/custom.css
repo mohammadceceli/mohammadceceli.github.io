@@ -757,6 +757,67 @@ code {
         padding: 0 15px !important;
     }
 }
+@media (max-width: 768px) {
+    /* ظرف اصلی کارت‌ها */
+    .post-entry {
+        display: flex !important;
+        flex-direction: row !important; /* چیدمان افقی به جای عمودی */
+        align-items: stretch;
+        padding: 10px !important; /* پدینگ کمتر برای صرفه‌جویی در فضا */
+        gap: 15px !important;
+        margin-bottom: 16px !important;
+        height: 120px; /* ارتفاع ثابت برای یکدست شدن لیست */
+        background: rgba(47, 46, 50, 0.6) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 16px !important;
+        overflow: hidden;
+    }
+
+    /* تنظیم بخش تصویر */
+    .post-entry .entry-cover {
+        width: 100px !important; /* اندازه کوچک و ثابت برای تصویر */
+        height: 100px !important;
+        min-width: 100px;
+        margin: 0 !important;
+        border-radius: 12px !important;
+        align-self: center;
+    }
+
+    /* تنظیم بخش محتوا (متن) */
+    .post-entry .entry-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow: hidden;
+        text-align: right;
+        flex-grow: 1;
+    }
+
+    /* عنوان پست */
+    .post-entry .entry-header h2 {
+        font-size: 0.95rem !important; /* فونت کوچک‌تر و خوانا */
+        margin: 0 0 8px 0 !important;
+        line-height: 1.4 !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* محدود کردن عنوان به ۲ خط */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        color: #ffffff !important;
+    }
+
+    /* پنهان کردن خلاصه متن در موبایل برای خلوت شدن ظاهر */
+    .post-entry .entry-content {
+        display: none !important;
+    }
+
+    /* فوتر کارت (تاریخ و متاداتا) */
+    .post-entry .entry-footer {
+        margin-top: auto !important;
+        font-size: 0.75rem !important;
+        opacity: 0.7;
+        color: #CDCDCD !important;
+    }
+}
 :root {
     --theme: #000000 !important;
     --entry: #000000 !important;
