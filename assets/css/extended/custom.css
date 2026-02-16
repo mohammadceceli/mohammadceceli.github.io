@@ -912,6 +912,35 @@ code {
 .post-entry .entry-footer span:not(.date) { 
     display: none !important; 
 }
+@media (max-width: 768px) {
+    /* ۱. کاهش پدینگ کل بخش متنی */
+    .post-entry .entry-header {
+        padding: 8px 12px 2px 12px !important; /* فاصله پایین را به ۲ پیکسل رساندم */
+        text-align: right;
+    }
+
+    /* ۲. اصلاح فوتر (بخش تاریخ) که عامل اصلی فاصله زیاد از پایین است */
+    .post-entry .entry-footer {
+        padding: 0 12px 8px 12px !important; /* فاصله از لبه پایین کارت را به ۸ پیکسل رساندم */
+        margin: 0 !important; /* حذف هرگونه مارجین پیش‌فرض */
+        border: none !important;
+        min-height: auto !important; /* جلوگیری از اشغال فضای اضافی */
+    }
+
+    /* ۳. تنظیم فونت تاریخ برای هماهنگی بیشتر */
+    .post-entry .entry-footer .date {
+        font-size: 0.75rem !important;
+        color: #CDCDCD !important;
+        opacity: 0.6;
+    }
+
+    /* ۴. حذف هرگونه فضای خالی احتمالی در انتهای کارت */
+    .post-entry {
+        gap: 0 !important; /* حذف فاصله بین عکس و متن در صورت وجود */
+        display: flex !important;
+        flex-direction: column !important;
+    }
+}
 }
 }
 :root {
