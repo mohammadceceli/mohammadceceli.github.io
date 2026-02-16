@@ -1,85 +1,17 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <div class="mobile-toggle" id="mobileToggle">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
-
-            <div class="hamburger" id="hamburger">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
-
-<div class="menu-overlay" id="menuOverlay"></div>
-
-            {{- $label_text := (site.Params.logo.text | default site.Title) }}
-            {{- if site.Title }}
-            <a href="{{ "" | absLangURL }}" accesskey="h" title="{{ $label_text }} (Alt + H)">
-                {{- if site.Params.logo.icon }}
-                <img src="{{ site.Params.logo.icon | absURL }}" alt="" aria-label="logo"
-                    height="{{ site.Params.logo.iconHeight | default " 30" }}">
-                {{- end -}}
-                {{- $label_text -}}
-            </a>
-            {{- end }}
+            <a href="/">{{ site.Title }}</a>
         </div>
-
-        {{- $currentPage := . }}
-        <ul id="menu" class="menu">
+        
+        <ul id="menu">
             {{- range site.Menus.main }}
-            {{- $menu_item_url := (cond (strings.HasPrefix .URL "/") (.URL | relLangURL) .URL) | safeURL }}
-            <li class="menu-item">
-                <a href="{{ $menu_item_url }}" title="{{ .Title | default .Name }}"
-                    {{ if (or (eq $currentPage.RelPermalink .URL) (eq $currentPage.Permalink .URL)) }} class="active" {{ end }}>
-                    {{ .Name }}
-                    {{- if .HasChildren }}
-                    <span class="dropdown-icon">▼</span>
-                    {{- end }}
-                </a>
-                {{- if .HasChildren }}
-                <ul class="sub-menu">
-                    {{- range .Children }}
-                    {{- $child_url := (cond (strings.HasPrefix .URL "/") (.URL | relLangURL) .URL) | safeURL }}
-                    <li>
-                        <a href="{{ $child_url }}" title="{{ .Title | default .Name }}">
-                            {{ .Name }}
-                            {{- if .HasChildren }} <span class="dropdown-icon">◀</span> {{- end }}
-                        </a>
-                        {{- if .HasChildren }}
-                        <ul class="sub-menu">
-                            {{- range .Children }}
-                            {{- $sub_child_url := (cond (strings.HasPrefix .URL "/") (.URL | relLangURL) .URL) | safeURL }}
-                            <li>
-                                <a href="{{ $sub_child_url }}" title="{{ .Title | default .Name }}">
-                                    {{ .Name }}
-                                </a>
-                            </li>
-                            {{- end }}
-                        </ul>
-                        {{- end }}
-                    </li>
-                    {{- end }}
-                </ul>
-                {{- end }}
-            </li>
+            <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
             {{- end }}
         </ul>
-        <div class="search-wrapper">
-    <form action="{{ "search/" | absURL }}" method="get" class="search-form">
-        <input type="text" name="q" placeholder="جستجو..." class="search-input" id="searchInput" autocomplete="off">
-        <button type="submit" class="search-submit" aria-label="Search">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
+
+        <button id="menu-trigger" aria-label="Menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
-        <div id="fastSearch">
-            <ul id="searchResults"></ul>
-        </div>
-    </form>
-</div>
     </nav>
 </header>
