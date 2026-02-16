@@ -566,3 +566,163 @@ pre {
     transition: all 0.3s ease;
 }
 .menu-overlay.show { opacity: 1; visibility: visible; }
+/* ==========================================================================
+   FIXED HEADER STRUCTURE (Minimal Style Changes)
+   ========================================================================== */
+
+/* --- 1. تنظیمات کلی هدر (مشترک موبایل و دسکتاپ) --- */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(36, 35, 39, 0.95); /* رنگ پس‌زمینه هدر */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 15px 0;
+    transition: all 0.3s ease;
+}
+
+.header .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* فاصله حداکثری بین لوگو و منو */
+    height: 100%;
+}
+
+/* لوگو */
+.logo a {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--primary, #fff); /* استفاده از متغیر رنگ خودتان */
+    text-decoration: none;
+}
+
+/* --- 2. استایل دسکتاپ (پیش‌فرض) --- */
+
+/* لیست منو در حالت دسکتاپ */
+.menu {
+    display: flex;
+    flex-direction: row; /* چیدمان افقی */
+    gap: 30px; /* فاصله بین آیتم‌های منو */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.menu li {
+    margin: 0;
+}
+
+.menu a.nav-link {
+    color: var(--secondary, #cdcdcd); /* رنگ متن اصلی شما */
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.menu a.nav-link:hover,
+.menu a.nav-link.active {
+    color: var(--primary, #ffffff);
+}
+
+/* دکمه همبرگری در دسکتاپ مخفی است */
+.mobile-toggle {
+    display: none;
+}
+
+/* Overlay برای موبایل (در دسکتاپ مخفی) */
+.menu-overlay {
+    display: none;
+}
+
+
+/* --- 3. استایل موبایل (Responsive) --- */
+@media (max-width: 768px) {
+
+    /* نمایش دکمه همبرگری فقط در موبایل */
+    .mobile-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 26px;
+        height: 20px;
+        cursor: pointer;
+        z-index: 1002; /* بالاتر از منو */
+    }
+
+    .mobile-toggle span {
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: var(--primary, #ffffff);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    /* انیمیشن تبدیل به ضربدر */
+    .mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+    .mobile-toggle.active span:nth-child(2) { opacity: 0; }
+    .mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+    /* استایل منوی کشویی موبایل */
+    .menu {
+        position: fixed;
+        top: 0;
+        right: -260px; /* خارج از صفحه */
+        width: 260px;
+        height: 100vh;
+        
+        /* اصلاح رنگ و حذف تاری متن */
+        background-color: #1a1a1a; /* رنگ سالید تیره برای خوانایی */
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+        
+        flex-direction: column; /* چیدمان عمودی */
+        align-items: flex-start;
+        padding: 80px 30px 30px; /* فضای بالا برای دکمه ضربدر */
+        transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1001;
+    }
+
+    /* کلاس فعال برای باز شدن منو */
+    .menu.mobile-open {
+        right: 0;
+    }
+
+    .menu li {
+        width: 100%;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        padding-bottom: 10px;
+    }
+
+    .menu a.nav-link {
+        font-size: 1.1rem;
+        display: block;
+    }
+
+    /* لایه تاریک پشت منو */
+    .menu-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6); /* فقط تیرگی، بدون تاری */
+        backdrop-filter: blur(2px); /* تاری خیلی ملایم فقط روی پس‌زمینه سایت */
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s;
+    }
+
+    .menu-overlay.show {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* جلوگیری از اسکرول بادی وقتی منو باز است */
+    body.menu-lock {
+        overflow: hidden;
+    }
+}
