@@ -875,7 +875,7 @@ code {
 /* ۴. بخش متنی کارت (فضای دور تیتر) */
 .post-entry .entry-header {
     /* کاهش فضای خالی (پدینگ) بالا و پایین و طرفین */
-    padding: 12px 16px 8px 16px !important;
+    padding: 8px 10px 5px 10px !important;
     text-align: right;
 }
 
