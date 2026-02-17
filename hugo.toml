@@ -20,6 +20,7 @@ defaultContentLanguage = "fa"
   env = "production"
   author = "سامان"
   description = "تک ۲۰۴۹ - روایتی از دنیای تکنولوژی و آینده"
+  favicon = "favicon.ico"
   
   # ظاهر و تم
   DateFormat = "2006/01/02"
