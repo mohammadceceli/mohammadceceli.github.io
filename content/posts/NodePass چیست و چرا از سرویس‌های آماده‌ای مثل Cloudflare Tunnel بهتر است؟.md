@@ -4,7 +4,7 @@ title: " NodePass چیست و چرا از سرویس‌های آماده‌ای 
 date: 1404-11-25
 draft: false
 type: post
-tags: ["شبکه،امنیت"]
+tags: ["شبکه"]
 categories: ["شبکه،امنیت،سخت افزار،نرم افزار"]
 cover:
   image: "https://s34.picofile.com/file/8490201134/Screenshot_2026_02_03_214147.png"
