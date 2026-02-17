@@ -69,38 +69,7 @@ defaultContentLanguage = "fa"
     noClasses = false
     style = "monokai"
     lineNos = false
-
-# ======================================================
-# منوی اصلی سایت
-# ======================================================
-[[menu.main]]
-  name = "دسته‌بندی‌ها"
-  identifier = "categories"
-  url = "/"                  # لینک واقعی به جای #
-  weight = 1
-
-[[menu.main]]
-  name = "هوش مصنوعی"
-  parent = "categories"
-  identifier = "ai"
-  url = "/categories/ai"
-  weight = 1
-
-[[menu.main]]
-  name = "برنامه نویسی"
-  parent = "categories"
-  identifier = "programming"
-  url = "/categories/programming"
-  weight = 2
-  
-[[menu.main]]
-  name = "درباره من"
-  identifier = "about"
-  url = "/me/"
-  weight = 3
-
-[[menu.main]]
-  name = "قهوه"
-  identifier = "coffee"
-  url = "/coffee/"
-  weight = 4
+    
+[taxonomies]
+  category = "categories"
+  tag = "tags"
