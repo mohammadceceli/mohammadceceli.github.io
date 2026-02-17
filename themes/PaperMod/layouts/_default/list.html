@@ -122,16 +122,4 @@
 {{ define "main" }}
 
 <h1>{{ .Title }}</h1>
-
-<div class="post-grid">
-  {{ range .Pages }}
-    <article class="post-card">
-      <a href="{{ .RelPermalink }}">
-        <h2>{{ .Title }}</h2>
-        <p>{{ .Summary }}</p>
-      </a>
-    </article>
-  {{ end }}
-</div>
-
 {{ end }}
