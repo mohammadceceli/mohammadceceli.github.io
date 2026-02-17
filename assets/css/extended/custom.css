@@ -1,23 +1,26 @@
 /* ==========================================================================
-   FINAL CLEAN ARCHITECTURE - GLASS DARK THEME
-   Optimized for Desktop & Mobile
+   CUSTOM CLEAN ARCHITECTURE
+   Based on your existing Light Theme
    ========================================================================== */
 
 /* ================================
    1. FONTS
 ================================ */
+
 @font-face {
     font-family: "Vazirmatn";
     src: url("/fonts/Vazirmatn-Regular.woff2") format("woff2");
     font-weight: 400;
     font-display: swap;
 }
+
 @font-face {
     font-family: "Vazirmatn";
     src: url("/fonts/Vazirmatn-Medium.woff2") format("woff2");
     font-weight: 500;
     font-display: swap;
 }
+
 @font-face {
     font-family: "Vazirmatn";
     src: url("/fonts/Vazirmatn-Bold.woff2") format("woff2");
@@ -26,32 +29,45 @@
 }
 
 /* ================================
-   2. VARIABLES (Consolidated)
+   2. DESIGN TOKENS (Colors Preserved)
 ================================ */
-:root {
-    /* Colors */
-    --bg-body: #242327;
-    --text-main: #ffffff;
-    --text-muted: #CDCDCD;
-    --accent: #4f46e5;
-    
-    /* Glassmorphism Tokens */
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-blur: blur(18px);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 
-    /* Layout */
-    --container-width: 1300px;
-    --header-height: 100px;
-    --radius-md: 16px;
-    --radius-lg: 24px;
+:root {
+
+    /* === Primary Colors (unchanged from your CSS) === */
+    --primary: #000000;
+    --secondary: #666666;
+    --accent: #4f46e5;
+
+    /* === Background System === */
+    --bg-main: #ffffff;
+    --bg-soft: #f8f9fa;
+    --bg-card: ##cdcdcd;
+
+    /* === Borders === */
+    --border-light: #e5e7eb;
+    --border-soft: #f1f1f1;
+
+    /* === Text === */
+    --text-main: #111111;
+    --text-muted: #6b7280;
+
+    /* === Radius === */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    /* === Transition === */
+    --transition: 0.3s ease;
 }
 
 /* ================================
-   3. GLOBAL RESET & BASE
+   3. GLOBAL RESET
 ================================ */
-*, *::before, *::after {
+
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -62,55 +78,165 @@ html {
 body {
     margin: 0;
     padding: 0;
-    padding-top: var(--header-height); /* Space for fixed header */
     direction: rtl;
     text-align: right;
+
     font-family: "Vazirmatn", sans-serif;
-    background-color: var(--bg-body);
+    font-weight: 400;
+
+    background: var(--bg-main);
     color: var(--text-main);
+
     line-height: 1.8;
-    overflow-x: hidden;
-}
-
-a {
-    color: var(--text-main);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-a:hover {
-    opacity: 0.8;
-    color: var(--accent);
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: var(--radius-md);
 }
 
 /* ================================
-   4. LAYOUT STRUCTURE
+   4. TYPOGRAPHY
 ================================ */
-.main, .container, .wrapper {
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    margin: 0 0 16px;
+    line-height: 1.4;
+}
+
+p {
+    margin: 0 0 18px;
+    color: var(--text-main);
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+ul, ol {
+    padding-right: 20px;
+    margin: 0 0 20px;
+}
+
+/* ================================
+   5. CONTAINER & LAYOUT
+================================ */
+
+.container,
+.main {
     width: 100%;
-    max-width: var(--container-width);
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-.main-wrapper {
-    display: grid;
-    grid-template-columns: 300px 1fr; /* Sidebar | Content */
-    gap: 40px;
-    align-items: start;
-    margin-top: 40px;
+.page {
+    padding: 60px 0;
+}
+
+.post-content {
+    font-size: 16px;
+    color: var(--text-main);
+}
+
+.post-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.post-meta {
+    font-size: 14px;
+    color: var(--text-muted);
 }
 
 /* ================================
-   5. HEADER (Glassmorphism)
+   6. CARD SYSTEM (Preserved Look)
 ================================ */
+
+.post-entry,
+.card,
+.sidebar-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    transition: var(--transition);
+}
+
+.post-entry:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* ================================
+   7. IMAGES
+================================ */
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+}
+
+/* ================================
+   8. TABLES
+================================ */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+}
+
+table th,
+table td {
+    border: 1px solid var(--border-light);
+    padding: 12px;
+    text-align: right;
+}
+
+table th {
+    background: var(--bg-soft);
+}
+
+/* ================================
+   9. CODE BLOCKS
+================================ */
+
+pre {
+    background: var(--bg-soft);
+    padding: 16px;
+    border-radius: var(--radius-sm);
+    overflow-x: auto;
+}
+
+code {
+    font-family: monospace;
+}
+
+/* ================================
+   10. UTILITIES
+================================ */
+
+.text-center {
+    text-align: center;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.mb-40 {
+    margin-bottom: 40px;
+}
+/* ==========================================================================
+   11. PRO HEADER + NAVIGATION
+   ========================================================================== */
+
+/* استایل اصلی هدر */
 .header {
+    /* موقعیت دهی */
     position: fixed;
     top: 20px;
     left: 50%;
@@ -118,30 +244,56 @@ img {
     width: 92%;
     max-width: 1200px;
     z-index: 2000;
-    
-    background: rgba(47, 46, 50, 0.65);
-    backdrop-filter: blur(15px);
+
+    /* افکت شیشه‌ای با رنگ جدید #2F2E32 */
+    background: rgba(47, 46, 50, 0.65); /* رنگ درخواستی با شفافیت 65% */
+    backdrop-filter: blur(15px); /* ایجاد تاری پشت هدر */
     -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(205, 205, 205, 0.15);
-    border-radius: 20px;
-    box-shadow: var(--glass-shadow);
     
-    padding: 12px 30px;
+    /* حاشیه و سایه برای عمق دادن به حالت شیشه‌ای */
+    border: 1px solid rgba(205, 205, 205, 0.15); /* حاشیه بسیار ظریف */
+    border-radius: 20px; /* لبه‌های گرد مدرن */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    
+    /* چیدمان داخلی */
+    padding: 18px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transition: all 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* افکت هدر هنگام اسکرول (منسجم‌تر و باریک‌تر) */
 .header.scrolled {
     top: 10px;
-    background: rgba(47, 46, 50, 0.85);
+    padding: 12px 30px;
+    background: rgba(47, 46, 50, 0.85); /* تیره‌تر شدن برای خوانایی بیشتر در اسکرول */
+    border-color: rgba(205, 205, 205, 0.2);
 }
 
+/* تنظیم رنگ متن‌ها و لینک‌های عمومی */
+.header a, 
+.header li,
+.header span {
+    color: #CDCDCD !important;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+/* استایل لوگو */
 .logo a {
     font-size: 1.6rem;
     font-weight: 800;
-    color: #CDCDCD;
+    color: #CDCDCD !important;
+    letter-spacing: -0.5px;
+    /* حذف افکت‌های قبلی که با رنگ جدید تداخل داشت */
+    background: none;
+    -webkit-text-fill-color: initial;
+}
+
+/* افکت هاور برای لینک‌ها */
+.header a:hover {
+    opacity: 0.8;
 }
 
 /* Desktop Menu */
@@ -156,75 +308,190 @@ img {
 .menu li a {
     font-size: 16px;
     font-weight: 500;
-    color: #CDCDCD;
+    color: var(--text-main);
+    text-decoration: none;
+    padding: 6px 0;
     position: relative;
+    transition: all 0.3s ease;
 }
 
-.menu li a:hover {
-    color: #fff;
+.menu li a::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.35s ease;
 }
 
-/* Hamburger Toggle (Hidden on Desktop) */
+.menu li a:hover::after,
+.menu li a.active::after {
+    width: 100%;
+}
+
+.menu li a:hover,
+.menu li a.active {
+    color: var(--accent);
+}
+
+/* ==============================================
+   MOBILE HEADER + HAMBURGER + OFF-CANVAS
+============================================== */
+
 .mobile-toggle {
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    width: 26px;
-    height: 20px;
+    width: 24px;
+    height: 18px;
     cursor: pointer;
-    z-index: 3001;
 }
 
 .mobile-toggle span {
     height: 2px;
     width: 100%;
-    background: #CDCDCD;
+    background: var(--text-main);
     border-radius: 2px;
-    transition: all 0.3s ease;
+    transition: all 0.35s ease;
 }
 
-/* Hamburger Active State */
-.mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translateY(8px); }
-.mobile-toggle.active span:nth-child(2) { opacity: 0; }
-.mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translateY(-8px); }
+/* Hamburger active (X) */
+.mobile-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(7px);
+}
+.mobile-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+.mobile-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-7px);
+}
 
-/* ================================
-   6. POST CARDS (Home/Archive)
-================================ */
+/* Off-canvas Menu */
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1500;
+}
+
+.menu-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 768px) {
+
+    body {
+        padding-top: 72px;
+    }
+
+    .header {
+        top: 8px;
+        padding: 14px 20px;
+        border-radius: var(--radius-lg);
+    }
+
+    .nav {
+        justify-content: center;
+        position: relative;
+        min-height: 56px;
+    }
+
+    .logo {
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .mobile-toggle {
+        display: flex;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 3000;
+    }
+
+    /* Mobile off-canvas menu */
+    .menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 82%;
+        max-width: 320px;
+        height: 100vh;
+        background: var(--bg-main);
+        border-left: 1px solid var(--border-light);
+        padding: 110px 25px 40px;
+        flex-direction: column;
+        gap: 0;
+        transition: right 0.35s ease;
+        z-index: 2500;
+        overflow-y: auto;
+    }
+
+    .menu.mobile-open {
+        right: 0;
+    }
+
+    .menu > li > a {
+        display: block;
+        padding: 18px 0;
+        font-size: 1rem;
+        border-bottom: 1px solid var(--border-light);
+        color: var(--text-main);
+    }
+
+    .menu li {
+        opacity: 0;
+        transform: translateX(30px);
+        transition: all 0.4s ease;
+    }
+
+    .menu.mobile-open li {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    body.menu-lock {
+        overflow: hidden;
+    }
+}
+/* ==========================================================================
+   12. POSTS & CARDS
+   ========================================================================== */
+
 .post-entry {
     display: grid;
     grid-template-columns: 260px 1fr;
     gap: 25px;
+    align-items: center;
     padding: 24px;
-    margin-bottom: 30px;
-    
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-lg);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    transition: all 0.35s ease;
-    
-    /* Hack for Grid Direction in RTL */
-    direction: ltr; 
-}
+    margin-bottom: 32px;
 
-.post-entry * { direction: rtl; } /* Reset text direction */
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    transition: all 0.35s ease;
+}
 
 .post-entry:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transform: translateY(-3px);
 }
 
-.entry-cover {
-    width: 100%;
+.post-entry .entry-cover {
+    width: 260px;
     height: 180px;
     border-radius: var(--radius-md);
     overflow: hidden;
 }
 
-.entry-cover img {
+.post-entry .entry-cover img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -232,308 +499,947 @@ img {
 }
 
 .post-entry:hover .entry-cover img {
-    transform: scale(1.08);
+    transform: scale(1.05);
 }
 
-.entry-header h2 {
-    margin: 0 0 12px 0;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #fff;
+.post-entry .entry-header h2 {
+    font-size: 1.35rem;
+    margin-bottom: 10px;
+    color: var(--text-main);
 }
 
-.entry-content p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
+.post-entry .entry-content p {
     margin: 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    line-height: 1.8;
 }
 
-.entry-footer {
+.post-entry .entry-footer {
     margin-top: 15px;
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.5);
-    display: flex;
-    gap: 15px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
 }
 
 /* ================================
-   7. SIDEBAR (Glass)
+   13. SIDEBAR
 ================================ */
+
 .sidebar {
+    width: 300px;
     position: sticky;
-    top: 130px;
+    top: 120px;
 }
 
+.sidebar-section,
 .sidebar-box {
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    border: 1px solid var(--glass-border);
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
     border-radius: var(--radius-md);
-    padding: 24px;
+    padding: 20px;
     margin-bottom: 30px;
+    transition: all 0.3s ease;
 }
 
+.sidebar-section:hover {
+    transform: translateY(-4px);
+}
+
+.sidebar-section h3,
 .sidebar-box h3 {
-    margin-top: 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 12px;
-    margin-bottom: 20px;
-    color: #fff;
-}
-
-/* Suggested Posts List */
-.suggested-posts { padding: 0; list-style: none; margin: 0; }
-.suggested-post-item { margin-bottom: 20px; }
-.suggested-post-thumb { width: 100%; height: 140px; object-fit: cover; margin-bottom: 10px; }
-.suggested-post-info h4 { font-size: 0.95rem; margin: 0; line-height: 1.5; }
-
-/* ================================
-   8. SINGLE POST PAGE
-================================ */
-.post-layout {
-    display: flex;
-    flex-direction: row-reverse; /* Sidebar on left */
-    gap: 60px;
-}
-
-.post-single { flex: 1; min-width: 0; }
-.post-sidebar { width: 300px; }
-
-.post-single .post-title {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #fff;
-}
-
-.post-content {
+    margin-bottom: 16px;
     font-size: 1.1rem;
-    line-height: 2;
-    color: #e0e0e0;
-    text-align: justify;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 8px;
 }
 
-.post-content blockquote {
-    background: rgba(255, 255, 255, 0.05);
-    border-right: 4px solid #fff;
-    margin: 30px 0;
-    padding: 20px;
-    border-radius: 8px;
-    font-style: italic;
+.suggested-posts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-/* Code Blocks */
-pre {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.1);
-    direction: ltr;
-    overflow-x: auto;
+.suggested-post-item {
+    margin-bottom: 20px;
 }
-code { font-family: monospace; }
+
+.suggested-post-link {
+    display: block;
+}
+
+.suggested-post-thumb {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    margin-bottom: 8px;
+}
+
+.suggested-post-info h4 {
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.5;
+}
 
 /* ================================
-   9. CATEGORY GRID (Card Style)
+   14. FOOTER
 ================================ */
-.post-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
-}
 
-.post-card {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 18px;
-    overflow: hidden;
-    transition: 0.3s ease;
-}
-
-.post-card:hover { transform: translateY(-8px); }
-
-.post-card-image { height: 180px; overflow: hidden; }
-.post-card-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-.post-card:hover .post-card-image img { transform: scale(1.1); }
-
-.post-card-content { padding: 20px; }
-.post-card h2 { font-size: 1.1rem; margin: 0 0 10px; }
-
-/* ================================
-   10. FOOTER (Capsule Style)
-================================ */
 .footer {
-    margin-top: 80px;
-    padding-bottom: 40px;
+    background: var(--bg-card);
+    padding: 30px 40px;
+    border-top: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    margin-top: 60px;
 }
 
 .footer-container {
-    background: rgba(255, 255, 255, 0.04);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: right;
+}
+
+.footer-social-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.footer-social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-light);
+    color: var(--text-main);
+    transition: all 0.3s ease;
+}
+
+.footer-social-links a:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   REWRITE: MOBILE VERSION (Glassmorphism Style)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* 1. تنظیمات کلی بدنه در موبایل */
+    body {
+        padding-top: 90px !important; /* جلوگیری از رفتن محتوا زیر هدر */
+        overflow-x: hidden;
+    }
+
+    /* 2. هدر شیشه‌ای موبایل */
+    .header {
+        top: 10px !important;
+        width: 94% !important;
+        padding: 12px 20px !important;
+        border-radius: 18px !important;
+        background: rgba(47, 46, 50, 0.75) !important; /* رنگ درخواستی شما */
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        border: 1px solid rgba(205, 205, 205, 0.1) !important;
+    }
+
+    /* 3. دکمه همبرگری (Hamburger) */
+    .mobile-toggle {
+        display: flex !important;
+        flex-direction: column;
+        gap: 5px;
+        z-index: 3001;
+        cursor: pointer;
+    }
+
+    .mobile-toggle span {
+        background: #CDCDCD !important; /* رنگ متن درخواستی */
+        height: 2px;
+        width: 25px;
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+
+    /* انیمیشن تبدیل به X */
+    .mobile-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .mobile-toggle.active span:nth-child(2) { opacity: 0; }
+    .mobile-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* 4. منوی کشویی (Off-canvas) */
+    .menu {
+        position: fixed !important;
+        top: 0;
+        right: -100% !important; /* مخفی در حالت عادی */
+        width: 80% !important;
+        height: 100vh !important;
+        background: rgba(36, 35, 39, 0.98) !important; /* رنگ تیره ثابت برای خوانایی */
+        backdrop-filter: blur(20px);
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 25px !important;
+        padding: 40px !important;
+        transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1) !important;
+        z-index: 3000 !important;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    }
+
+    .menu.mobile-open {
+        right: 0 !important;
+    }
+
+    .menu li {
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .menu.mobile-open li {
+        opacity: 1;
+        transform: translateY(0);
+        transition: 0.4s all ease;
+    }
+
+    .menu li a {
+        font-size: 1.2rem !important;
+        color: #CDCDCD !important;
+        display: block;
+        padding: 10px;
+        border-bottom: 1px solid rgba(205, 205, 205, 0.05);
+    }
+
+    /* 5. کارت‌های پست در موبایل (Post Entries) */
+    .post-entry {
+        display: flex !important;
+        flex-direction: column !important; /* چیدمان عمودی */
+        padding: 15px !important;
+        gap: 15px !important;
+        margin-bottom: 25px !important;
+        border-radius: 20px !important;
+        direction: rtl !important; /* اصلاح جهت برای موبایل */
+    }
+
+    .post-entry .entry-cover {
+        width: 100% !important;
+        height: 200px !important;
+        grid-column: auto !important; /* حذف تنظیمات گرید دسکتاپ */
+    }
+
+    .post-entry .entry-header h2 {
+        font-size: 1.15rem !important;
+        margin: 10px 0 !important;
+    }
+
+    /* 6. فوتر در موبایل */
+    .footer-container {
+        grid-template-columns: 1fr !important; /* تک ستونه شدن */
+        padding: 30px 20px !important;
+        gap: 30px !important;
+        text-align: center !important;
+    }
+
+    .footer-social-links {
+        justify-content: center !important;
+    }
+
+    /* 7. مخفی سازی سایدبار در موبایل */
+    .sidebar, .post-sidebar {
+        display: none !important;
+    }
+
+    .main-wrapper, .post-layout {
+        display: block !important;
+        padding: 0 15px !important;
+    }
+    @media (max-width: 768px) {
+    /* ۱. اصلاح بدنه اصلی برای حذف فضاهای خالی اضافی */
+    .main-wrapper, .container {
+        padding: 0 12px !important;
+    }
+
+    /* ۲. بازطراحی کامل کارت پست‌ها */
+    .post-entry {
+        display: flex !important;
+        flex-direction: column !important; /* چیدمان عمودی برای باز شدن فضا برای تیتر */
+        padding: 0 !important; /* پدینگ داخلی را صفر می‌کنیم تا تصویر کامل بچسبد */
+        margin-bottom: 24px !important;
+        background: rgba(47, 46, 50, 0.7) !important; /* رنگ درخواستی شما */
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(205, 205, 205, 0.1) !important;
+        border-radius: 20px !important;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ۳. بهینه‌سازی تصویر پست */
+    .post-entry .entry-cover {
+        width: 100% !important;
+        height: 180px !important; /* ارتفاع کنترل شده برای اشغال نکردن کل صفحه */
+        border-radius: 0 !important; /* تصویر به لبه‌ها می‌چسبد */
+        margin: 0 !important;
+    }
+
+    .post-entry .entry-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* ۴. بخش متنی کارت */
+    .post-entry .entry-header {
+        padding: 16px 20px 10px 20px !important;
+        text-align: right;
+    }
+
+    /* ۵. نمایش کامل تیتر */
+    .post-entry .entry-header h2 {
+        font-size: 1.2rem !important;
+        line-height: 1.6 !important;
+        color: #ffffff !important; /* رنگ سفید برای درخشش روی شیشه */
+        margin: 0 !important;
+        font-weight: 700;
+        display: block !important; /* اطمینان از نمایش کامل */
+    }
+
+    /* ۶. حذف خلاصه متن (برای خلوت شدن کارت در موبایل) */
+    .post-entry .entry-content {
+        display: none !important;
+    }
+
+    /* ۷. اصلاح فوتر کارت و حذف اطلاعات اضافی */
+    .post-entry .entry-footer {
+        padding: 0 20px 20px 20px !important;
+        border: none !important;
+        font-size: 0.85rem !important;
+        color: #CDCDCD !important; /* رنگ متن درخواستی */
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    /* حذف نام نویسنده و زمان مطالعه (طبق درخواست شما) */
+    .post-entry .entry-footer .author,
+    .post-entry .entry-footer .reading-time,
+    .post-entry .entry-footer span:not(.date) { 
+        display: none !important; 
+    }
+
+    /* ۸. خوانایی تاریخ */
+    .post-entry .entry-footer .date {
+        opacity: 0.8;
+        letter-spacing: 0.5px;
+    }
+
+    /* ۹. اصلاح ساختار کلی صفحه در موبایل */
+    .main-wrapper {
+        display: block !important;
+    }
+    
+    .sidebar {
+        display: none !important;
+    }
+    /* این کد را جایگزین بخش قبلی کارت‌ها در @media (max-width: 768px) کنید */
+
+/* ۲. بازطراحی کامل کارت پست‌ها */
+.post-entry {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 !important;
+    margin-bottom: 20px !important; /* فاصله بین کارت‌ها کمی کمتر شد */
+    background: rgba(47, 46, 50, 0.7) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(205, 205, 205, 0.1) !important;
+    border-radius: 16px !important; /* گردی گوشه‌ها کمی ملایم‌تر */
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ۳. بهینه‌سازی تصویر پست */
+.post-entry .entry-cover {
+    width: 100% !important;
+    height: 160px !important; /* ارتفاع عکس کمی کمتر شد تا کارت جمع‌وجورتر شود */
+    border-radius: 0 !important;
+    margin: 0 !important;
+}
+
+.post-entry .entry-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ۴. بخش متنی کارت (فضای دور تیتر) */
+.post-entry .entry-header {
+    /* کاهش فضای خالی (پدینگ) بالا و پایین و طرفین */
+    padding: 8px 10px 5px 10px !important;
+    text-align: right;
+}
+
+/* ۵. تنظیمات تیتر (سایز و رنگ جدید) */
+.post-entry .entry-header h2 {
+    font-size: 1.05rem !important; /* فونت کوچک‌تر و استاندارد برای موبایل */
+    line-height: 1.5 !important;
+    color: #CDCDCD !important; /* رنگ درخواستی شما */
+    margin: 0 !important;
+    font-weight: 700;
+    display: block !important;
+}
+
+/* ۶. حذف خلاصه متن */
+.post-entry .entry-content {
+    display: none !important;
+}
+
+/* ۷. اصلاح فوتر کارت (تاریخ) */
+.post-entry .entry-footer {
+    /* کاهش پدینگ پایین برای جمع شدن انتهای کارت */
+    padding: 0 16px 14px 16px !important;
+    border: none !important;
+    font-size: 0.8rem !important; /* فونت تاریخ کمی ریزتر */
+    color: #CDCDCD !important;
+    display: flex;
+    justify-content: flex-start;
+    opacity: 0.7; /* کمی محوتر برای تمرکز روی تیتر */
+}
+
+/* حذف اطلاعات اضافی */
+.post-entry .entry-footer .author,
+.post-entry .entry-footer .reading-time,
+.post-entry .entry-footer span:not(.date) { 
+    display: none !important; 
+}
+@media (max-width: 768px) {
+    /* ۱. کاهش پدینگ کل بخش متنی */
+    .post-entry .entry-header {
+        padding: 8px 12px 2px 12px !important; /* فاصله پایین را به ۲ پیکسل رساندم */
+        text-align: right;
+    }
+
+    /* ۲. اصلاح فوتر (بخش تاریخ) که عامل اصلی فاصله زیاد از پایین است */
+    .post-entry .entry-footer {
+        padding: 0 12px 8px 12px !important; /* فاصله از لبه پایین کارت را به ۸ پیکسل رساندم */
+        margin: 0 !important; /* حذف هرگونه مارجین پیش‌فرض */
+        border: none !important;
+        min-height: auto !important; /* جلوگیری از اشغال فضای اضافی */
+    }
+
+    /* ۳. تنظیم فونت تاریخ برای هماهنگی بیشتر */
+    .post-entry .entry-footer .date {
+        font-size: 0.75rem !important;
+        color: #CDCDCD !important;
+        opacity: 0.6;
+    }
+
+    /* ۴. حذف هرگونه فضای خالی احتمالی در انتهای کارت */
+    .post-entry {
+        gap: 0 !important; /* حذف فاصله بین عکس و متن در صورت وجود */
+        display: flex !important;
+        flex-direction: column !important;
+    }
+}
+}
+}
+:root {
+    --theme: #000000 !important;
+    --entry: #000000 !important;
+    --primary: #ffffff !important;
+    --secondary: #cdcdcd !important;
+    --content: #ffffff !important;
+    --border: rgba(255, 255, 255, 0.12) !important;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-blur: blur(18px);
+}
+
+/* --------------------------------------------------------------------------
+   2. GLOBAL RESET & BODY
+   -------------------------------------------------------------------------- */
+html, body {
+    background-color: #242327 !important;
+    color: #ffffff !important;
+    direction: rtl;
+    text-align: right;
+    font-family: "Vazirmatn", sans-serif !important;
+    /* فاصله از بالا برای هدر شناور */
+    padding-top: 100px; 
+}
+
+/* تمام متون */
+body, .logo, .post-content, .post-title, .post-entry, 
+.main, header, nav, h1, h2, h3, h4, h5, h6, 
+p, span, a, li, .sidebar, .footer {
+    font-family: "Vazirmatn", sans-serif !important;
+    color: var(--secondary) !important;
+}
+
+a { text-decoration: none; color: #ffffff !important; transition: opacity 0.2s; }
+a:hover { opacity: 0.8; }
+hr { border-color: #111111 !important; }
+
+/* --------------------------------------------------------------------------
+   3. LAYOUT STRUCTURE
+   -------------------------------------------------------------------------- */
+.main, .container, .wrapper {
+    max-width: 1400px !important;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.main-wrapper {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px;
+    align-items: start;
+}
+
+/* پنهان کردن اطلاعات اضافی صفحه اصلی */
+.home-info { display: none !important; }
+/* --------------------------------------------------------------------------
+   6. POST ENTRIES (ARCHIVE/HOME CARDS)
+   -------------------------------------------------------------------------- */
+.post-entry {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 25px;
+    align-items: center;
+    padding: 26px;
+    margin-bottom: 32px;
+    
+    background: var(--glass-bg) !important;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
+    direction: ltr; /* Grid Hack for correct column ordering in RTL */
+}
+
+.post-entry * { direction: rtl; } /* Reset direction for content */
+
+.post-entry:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    transform: translateY(-6px);
+}
+
+.post-entry .entry-cover {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    width: 260px;
+    height: 180px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.post-entry .entry-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .4s ease;
+}
+
+.post-entry:hover .entry-cover img { transform: scale(1.08); }
+
+.post-entry .entry-header h2 {
+    margin: 0 0 10px 0;
+    line-height: 1.5;
+    font-size: 1.35rem;
+    color: #fff !important;
+}
+
+.post-entry .entry-content p {
+    margin: 0;
+    line-height: 1.8;
+}
+
+.post-entry .entry-footer {
+    margin-top: 15px;
+    font-size: .82rem;
+    color: #aaaaaa !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. SIDEBAR
+   -------------------------------------------------------------------------- */
+.sidebar {
+    width: 300px;
+    position: sticky;
+    top: 120px;
+    height: fit-content;
+}
+
+.sidebar-section, .sidebar-box {
+    background: var(--glass-bg) !important;
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 16px;
+    padding: 22px;
+    margin-bottom: 30px;
+    transition: 0.35s;
+}
+
+.sidebar-section:hover { transform: translateY(-5px); }
+
+.sidebar-section h3, .sidebar-box h3 {
+    margin: 0 0 22px 0;
+    font-size: 1.1em;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 10px;
+}
+
+/* Suggested Posts in Sidebar */
+.suggested-posts { list-style: none; padding: 0; margin: 0; }
+.suggested-post-item { margin-bottom: 22px; }
+.suggested-post-link { display: block; }
+.suggested-post-thumb {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+.suggested-post-info h4 {
+    font-size: 14px;
+    margin: 0 0 6px 0;
+    line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   8. SINGLE POST PAGE (ARTICLE)
+   -------------------------------------------------------------------------- */
+.post-layout {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 80px;
+    align-items: flex-start;
+    padding: 0 40px;
+}
+
+.post-layout .post-single { flex: 3; min-width: 0; }
+.post-sidebar { flex: 1; position: sticky; top: 120px; }
+
+.post-single .post-title {
+    font-size: 1.8rem !important;
+    font-weight: 800 !important;
+    margin: 20px 0 15px;
+    color: #ffffff !important;
+}
+
+.post-single .entry-cover {
+    width: 100%;
+    max-width: 820px;
+    margin: 0 auto 30px auto;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.post-single .entry-cover img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+
+/* Typography inside post */
+.post-content { font-size: 1.05rem !important; line-height: 1.95 !important; text-align: justify; }
+.post-content h1 { font-size: 1.6rem !important; margin: 30px 0 15px; color: #eee; }
+.post-content h2 { 
+    font-size: 1.4rem !important; 
+    margin: 25px 0 15px; 
+    color: #fff;
+    padding-right: 12px;
+    border-right: 4px solid rgba(255,255,255,0.2);
+}
+.post-content blockquote {
+    margin: 30px 0;
+    padding: 20px 30px;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-right: 5px solid #ffffff;
+    border-radius: 10px 20px 20px 10px;
+    font-style: italic;
+}
+
+/* Tags & Meta */
+.post-tags a {
+    background: rgba(255,255,255,0.05) !important;
+    color: #cccccc !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    padding: 6px 15px;
+    border-radius: 12px;
+    display: inline-block;
+    margin: 5px 0;
+    font-size: 0.8rem !important;
+}
+.post-tags a:hover { background: #fff !important; color: #000 !important; }
+/* --------------------------------------------------------------------------
+   10. FOOTER (CAPSULE STYLE)
+   -------------------------------------------------------------------------- */
+.footer {
+    background: transparent !important;
+    padding: 20px 30px 40px 30px !important;
+    margin-top: 80px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.footer-container {
+    background: rgba(255, 255, 255, 0.04) !important;
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 40px;
-    padding: 50px;
-    
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: 50px 60px;
     text-align: right;
     box-shadow: 0 20px 50px rgba(0,0,0,0.3);
 }
 
 .footer-social-links { display: flex; gap: 15px; margin-top: 20px; }
 .footer-social-links a {
-    width: 40px; height: 40px;
+    background: rgba(255, 255, 255, 0.08);
+    width: 42px; height: 42px;
     display: flex; align-items: center; justify-content: center;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 10px;
-    color: #fff;
+    border-radius: 12px;
+    color: #fff !important;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: 0.3s;
 }
-.footer-social-links a:hover { background: #fff; color: #000; }
+.footer-social-links a:hover { background: #ffffff; color: #000 !important; transform: translateY(-5px); }
 
-/* ================================
-   11. AUTHOR BOX
-================================ */
+/* --------------------------------------------------------------------------
+   11. UTILITIES (SCROLLBAR, CODE, AUTHOR)
+   -------------------------------------------------------------------------- */
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.2); }
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    border: 2px solid rgba(0,0,0,0);
+    background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.5); }
+* { scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.2) rgba(0, 0, 0, 0.2); }
+
+/* Progress Bar */
+#progress-container { position: fixed; top: 0; left: 0; width: 100%; height: 3px; z-index: 9999; }
+#progress-bar { height: 100%; background: #ffffff; width: 0%; box-shadow: 0 0 10px rgba(255, 255, 255, 0.7); }
+
+/* Code Blocks */
+pre {
+    background: rgba(30, 30, 30, 0.7) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 15px !important;
+    padding: 20px !important;
+    direction: ltr !important;
+}
+code { font-family: 'Fira Code', 'Consolas', monospace !important; }
+.copy-code {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    top: 10px !important; right: 10px !important;
+}
+
+/* Author Box */
 .author-box {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    background: var(--glass-bg);
+    display: flex; align-items: center; gap: 30px;
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(15px);
     border: 1px solid var(--glass-border);
+    border-radius: 25px;
     padding: 30px;
-    border-radius: 24px;
     margin-top: 50px;
+    direction: rtl;
 }
-.author-avatar img { width: 90px; height: 90px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); }
-
-/* ==========================================================================
-   12. MOBILE & RESPONSIVE OVERRIDES
-   (Consolidated logic for all elements)
-   ========================================================================== */
-
+.author-avatar img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; }
 @media (max-width: 768px) {
-    
-    /* --- Base Layout --- */
-    .main-wrapper {
-        display: block; /* Stack Sidebar and Content */
-        margin-top: 20px;
-        padding: 0 15px;
-    }
-    
-    .sidebar, .post-sidebar {
-        display: none; /* Hide Sidebar on Mobile */
-    }
-
-    .post-layout {
-        display: block;
-    }
-
-    /* --- Mobile Header --- */
-    .header {
-        top: 10px;
-        width: 94%;
-        padding: 12px 20px;
-        background: rgba(47, 46, 50, 0.75);
-    }
-
-    .mobile-toggle {
-        display: flex; /* Show Hamburger */
-    }
-
-    /* Off-Canvas Menu */
-    .menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        height: 100vh;
-        background: #242327;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-        z-index: 2900;
-        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
-    }
-
-    .menu.mobile-open {
-        right: 0;
-    }
-    
-    .menu li a {
-        font-size: 1.2rem;
-        display: block;
-        padding: 15px;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-
-    /* --- Post Cards (Mobile Optimized) --- */
-    .post-entry {
-        display: flex;
-        flex-direction: column;
-        padding: 0;
-        gap: 0;
-        border-radius: 16px;
-        margin-bottom: 20px;
-        background: rgba(47, 46, 50, 0.7);
-        direction: rtl; /* Reset direction hack */
-    }
-
-    .post-entry .entry-cover {
-        width: 100%;
-        height: 160px;
-        border-radius: 0;
-    }
-
-    .post-entry .entry-header {
-        padding: 12px 16px 4px 16px;
-        text-align: right;
-    }
-
-    .post-entry .entry-header h2 {
-        font-size: 1.1rem;
-        line-height: 1.5;
-        color: #CDCDCD;
-    }
-
-    .post-entry .entry-content {
-        display: none; /* Hide summary on mobile for cleaner look */
-    }
-
-    .post-entry .entry-footer {
-        padding: 0 16px 14px 16px;
-        margin-top: 0;
-        font-size: 0.75rem;
-        color: rgba(205, 205, 205, 0.6);
-        border: none;
-    }
-    
-    /* Hide everything except date */
-    .entry-footer .author, 
-    .entry-footer .reading-time,
-    .entry-footer span:not(.date) {
-        display: none;
-    }
-
-    /* --- Author Box Mobile --- */
+    /* ۱. بهینه‌سازی ظرف اصلی باکس نویسنده */
     .author-box {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px;
+        flex-direction: column !important; /* چیدمان عمودی در موبایل */
+        gap: 15px !important; /* کاهش فاصله بین عکس و متن */
+        padding: 20px !important; /* پدینگ کمتر برای اشغال فضای کمتر */
+        margin-top: 30px !important;
+        text-align: center !important; /* وسط‌چین کردن محتوا */
+        border-radius: 20px !important;
+        background: rgba(47, 46, 50, 0.6) !important; /* هماهنگی با تم شیشه‌ای شما */
     }
-    
-    /* --- Footer Mobile --- */
-    .footer-container {
-        grid-template-columns: 1fr;
-        padding: 30px 20px;
-        text-align: center;
-        gap: 30px;
-    }
-    
-    .footer-social-links {
+
+    /* ۲. فیکس کردن عکس نویسنده (دایره کامل) */
+    .author-avatar {
+        display: flex;
         justify-content: center;
+        width: 100%;
     }
+
+    .author-avatar img {
+        width: 80px !important; /* سایز کمی کوچک‌تر برای موبایل */
+        height: 80px !important;
+        border-radius: 50% !important; /* تضمین دایره بودن */
+        border: 2px solid rgba(205, 205, 205, 0.2); /* حاشیه ظریف دور عکس */
+        object-fit: cover !important;
+    }
+
+    /* ۳. تنظیمات متن داخل باکس */
+    .author-info {
+        width: 100%;
+    }
+
+    .author-info h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 8px !important;
+        color: #ffffff !important;
+    }
+
+    .author-info p {
+        font-size: 0.9rem !important;
+        line-height: 1.6 !important;
+        color: #CDCDCD !important; /* رنگ متن درخواستی شما */
+        margin: 0 !important;
+    }
+}
+/* ===============================
+   CATEGORY GRID - PREMIUM STYLE
+================================= */
+
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+  margin-top: 2.5rem;
+}
+
+/* کارت اصلی */
+.post-card {
+  position: relative;
+  padding: 22px;
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  transition: all 0.35s cubic-bezier(.4,0,.2,1);
+  overflow: hidden;
+}
+
+/* گرادینت لایت افکت */
+.post-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top right,
+    rgba(0, 150, 255, 0.15),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+/* هاور */
+.post-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 150, 255, 0.4);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+.post-card:hover::before {
+  opacity: 1;
+}
+
+/* لینک کل کارت */
+.post-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* عنوان */
+.post-card h2 {
+  font-size: 19px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+/* تغییر رنگ عنوان در هاور */
+.post-card:hover h2 {
+  color: #4da3ff;
+}
+
+/* خلاصه متن */
+.post-card p {
+  font-size: 14px;
+  line-height: 1.8;
+  opacity: 0.75;
+}
+
+/* موبایل بهینه‌تر */
+@media (max-width: 768px) {
+  .post-grid {
+    gap: 18px;
+  }
+
+  .post-card {
+    padding: 18px;
+  }
+}
+.post-card p {
+  font-size: 14px;
+  line-height: 1.8;
+  opacity: 0.75;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 5;   /* محدود به 5 خط */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.post-card {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.35s ease;
+}
+
+/* تصویر */
+.post-card-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+
+.post-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* زوم ملایم در هاور */
+.post-card:hover .post-card-image img {
+  transform: scale(1.08);
+}
+
+/* محتوا */
+.post-card-content {
+  padding: 20px;
 }
