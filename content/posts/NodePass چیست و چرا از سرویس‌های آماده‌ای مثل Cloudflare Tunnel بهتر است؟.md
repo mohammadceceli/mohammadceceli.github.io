@@ -5,7 +5,7 @@ date: 1404-11-25
 draft: false
 type: post
 tags: ["شبکه"]
-categories: ["network", "security"]
+categories: ["network", "security", "Software", "hardware"]
 cover:
   image: "https://s34.picofile.com/file/8490201134/Screenshot_2026_02_03_214147.png"
   # can also paste direct link from external site
