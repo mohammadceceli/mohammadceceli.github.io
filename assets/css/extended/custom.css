@@ -1309,3 +1309,94 @@ code { font-family: 'Fira Code', 'Consolas', monospace !important; }
         margin: 0 !important;
     }
 }
+/* ===============================
+   CATEGORY GRID - PREMIUM STYLE
+================================= */
+
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+  margin-top: 2.5rem;
+}
+
+/* کارت اصلی */
+.post-card {
+  position: relative;
+  padding: 22px;
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  transition: all 0.35s cubic-bezier(.4,0,.2,1);
+  overflow: hidden;
+}
+
+/* گرادینت لایت افکت */
+.post-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top right,
+    rgba(0, 150, 255, 0.15),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+/* هاور */
+.post-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 150, 255, 0.4);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+.post-card:hover::before {
+  opacity: 1;
+}
+
+/* لینک کل کارت */
+.post-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* عنوان */
+.post-card h2 {
+  font-size: 19px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+/* تغییر رنگ عنوان در هاور */
+.post-card:hover h2 {
+  color: #4da3ff;
+}
+
+/* خلاصه متن */
+.post-card p {
+  font-size: 14px;
+  line-height: 1.8;
+  opacity: 0.75;
+}
+
+/* موبایل بهینه‌تر */
+@media (max-width: 768px) {
+  .post-grid {
+    gap: 18px;
+  }
+
+  .post-card {
+    padding: 18px;
+  }
+}
